@@ -1,0 +1,21 @@
+Name: &prj_name service.database.rpc
+ListenOn: 0.0.0.0:8080
+TimeBeforeQuit: 20
+Apollo:
+  Cluster: default
+  Ip: http://apollo-service-apollo-configservice.infrastructure.svc.cluster.local:8080
+  Namespace: application
+  Secret: xxxxxxx
+  IsBackup: true
+Consul:
+  Host: consul-client.infrastructure.svc.cluster.local:8500
+  Key: *prj_name
+Prometheus:
+  Host: 0.0.0.0
+  Port: 9091
+  Path: /metrics
+Telemetry:
+  Name: *prj_name
+  Endpoint: http://opentelemetry-collector.infrastructure.svc.cluster.local:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger

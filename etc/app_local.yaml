@@ -1,0 +1,21 @@
+Name: &prj_name service.database.rpc
+ListenOn: 0.0.0.0:8080
+TimeBeforeQuit: 20
+Apollo:
+  Cluster: default
+  Ip: http://dev-apollo-config.ickey.com.cn
+  Namespace: application
+  Secret: 295afe3ed06b417b803e00a8360272b1
+  IsBackup: false
+Consul:
+  Host: http://dev-consul-client.ickey.com.cn
+  Key: *prj_name
+Prometheus:
+  Host: 0.0.0.0
+  Port: 9091
+  Path: /metrics
+Telemetry:
+  Name: *prj_name
+  Endpoint: http://dev-opentelemetry-collector.ickey.com.cn/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
